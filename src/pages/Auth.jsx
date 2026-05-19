@@ -40,50 +40,52 @@ const handleSubmit = async (e) => {
 
   setLoading(true);
 
-  // 1. Préparation des données (Séparation Login vs Inscription)
   const { confirmPassword, ...registerData } = formData;
-  const loginData = { email: formData.email, password: formData.password };
-  
-  // Si c'est register, on envoie tout (sauf confirmPassword), sinon juste email/password
+  const loginData = {
+    email: formData.email,
+    password: formData.password,
+  };
+
   const dataToSend = register ? registerData : loginData;
   const endpoint = register ? "/api/users/register" : "/api/users/login";
 
   try {
     const response = await api.post(endpoint, dataToSend);
-    console.log("Réponse du serveur :", response.data);
 
     if (!register) {
-      // --- LOGIQUE LOGIN ---
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("role", response.data.role);
+  const { token, role, user } = response.data;
 
-        // Gestion sécurisée du nom : on vérifie si l'objet 'user' existe dans la réponse
-        // Si ton backend ne renvoie pas 'user', cela évitera les erreurs "undefined"
-        const fullName = response.data.user 
-          ? `${response.data.user.firstName} ${response.data.user.lastName}` 
-          : "Utilisateur";
-        localStorage.setItem("userName", fullName);
-        
-        alert("Connexion réussie !");
-      }
+  localStorage.setItem("token", token);
+  localStorage.setItem("role", role);
+  localStorage.setItem("user", JSON.stringify(user));
 
-      // Redirection par rôle
-      const role = response.data.role;
-      if (role === 'ADMIN' || role === 'RH') {
-        navigate('/dashboard');
+  alert("Connexion réussie !");
+
+  // ✅ ONLY ADMIN needs company check
+      if (role === "ADMIN") {
+        try {
+          const res = await api.get("/api/company/check");
+
+          if (!res.data.hasCompany) {
+            navigate("/create-company");
+            return;
+          }
+
+          localStorage.setItem("companyId", res.data.companyId); // ✅
+          navigate("/dashboard");
+        } catch (err) {
+          console.error("company check error:", err);
+          navigate("/create-company");
+        }
+      } else if (role === "HR") {
+        navigate("/dashboard");
       } else {
-        navigate('/feed');
+        navigate("/feed");
       }
-    } else {
-      // --- LOGIQUE INSCRIPTION ---
-      alert("Inscription réussie !");
-      setRegister(false); // On revient à la vue connexion
     }
   } catch (error) {
-    // Gestion des erreurs plus explicite
-    console.error("Erreur complète :", error);
-    alert(error.response?.data?.message || "Une erreur est survenue lors de la connexion.");
+    console.error(error);
+    alert(error.response?.data?.error || "Erreur serveur");
   } finally {
     setLoading(false);
   }

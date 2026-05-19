@@ -1,0 +1,140 @@
+export const statsData = [
+  {
+    title: 'Total Candidates',
+    value: '8,342',
+    change: '+12.5%',
+    trend: 'up',
+    icon: 'People',
+    color: '#2563EB',
+    bg: '#EFF6FF',
+  },
+  {
+    title: 'Active Job Offers',
+    value: '214',
+    change: '+8.3%',
+    trend: 'up',
+    icon: 'Work',
+    color: '#7C3AED',
+    bg: '#F5F3FF',
+  },
+  {
+    title: 'Companies',
+    value: '1,087',
+    change: '-2.1%',
+    trend: 'down',
+    icon: 'Business',
+    color: '#10B981',
+    bg: '#ECFDF5',
+  },
+  {
+    title: 'Applications',
+    value: '23,591',
+    change: '+18.7%',
+    trend: 'up',
+    icon: 'Assignment',
+    color: '#F59E0B',
+    bg: '#FFFBEB',
+  },
+];
+
+export const monthlyApplications = [
+  { month: 'Jan', applications: 320, hired: 80 },
+  { month: 'Feb', applications: 410, hired: 95 },
+  { month: 'Mar', applications: 380, hired: 88 },
+  { month: 'Apr', applications: 520, hired: 130 },
+  { month: 'May', applications: 490, hired: 120 },
+  { month: 'Jun', applications: 310, hired: 70 },
+  { month: 'Jul', applications: 260, hired: 55 },
+  { month: 'Aug', applications: 290, hired: 65 },
+  { month: 'Sep', applications: 430, hired: 105 },
+  { month: 'Oct', applications: 530, hired: 140 },
+  { month: 'Nov', applications: 410, hired: 100 },
+  { month: 'Dec', applications: 180, hired: 45 },
+];
+
+export const recentApplications = [
+  {
+    id: 1,
+    candidate: 'Yasmine El Idrissi',
+    avatar: 'Y',
+    role: 'Frontend Developer',
+    company: 'TechMaroc SA',
+    date: '30 Apr 2026',
+    status: 'Interview',
+    statusColor: 'warning',
+  },
+  {
+    id: 2,
+    candidate: 'Karim Benali',
+    avatar: 'K',
+    role: 'Data Analyst',
+    company: 'DataVision Maroc',
+    date: '29 Apr 2026',
+    status: 'Pending',
+    statusColor: 'info',
+  },
+  {
+    id: 3,
+    candidate: 'Fatima Zahra Mekki',
+    avatar: 'F',
+    role: 'HR Manager',
+    company: 'OCP Group',
+    date: '28 Apr 2026',
+    status: 'Hired',
+    statusColor: 'success',
+  },
+  {
+    id: 4,
+    candidate: 'Mehdi Cherkaoui',
+    avatar: 'M',
+    role: 'Backend Engineer',
+    company: 'Inwi Digital',
+    date: '27 Apr 2026',
+    status: 'Rejected',
+    statusColor: 'error',
+  },
+  {
+    id: 5,
+    candidate: 'Sara Alami',
+    avatar: 'S',
+    role: 'UX Designer',
+    company: 'Maroc Telecom',
+    date: '26 Apr 2026',
+    status: 'Interview',
+    statusColor: 'warning',
+  },
+  {
+    id: 6,
+    candidate: 'Omar Tazi',
+    avatar: 'O',
+    role: 'Full Stack Developer',
+    company: 'CDG Capital',
+    date: '25 Apr 2026',
+    status: 'Hired',
+    statusColor: 'success',
+  },
+];
+
+export const jobCategories = [
+  { name: 'Technology', count: 84, percentage: 39, color: '#2563EB' },
+  { name: 'Finance', count: 42, percentage: 20, color: '#7C3AED' },
+  { name: 'Marketing', count: 31, percentage: 14, color: '#10B981' },
+  { name: 'Human Resources', count: 27, percentage: 13, color: '#F59E0B' },
+  { name: 'Operations', count: 30, percentage: 14, color: '#EF4444' },
+];
+
+export const hiringFunnel = [
+  { stage: 'Applications Received', count: 2350, color: '#2563EB' },
+  { stage: 'Screened', count: 1240, color: '#7C3AED' },
+  { stage: 'Interviews Scheduled', count: 480, color: '#10B981' },
+  { stage: 'Offers Extended', count: 210, color: '#F59E0B' },
+  { stage: 'Hired', count: 143, color: '#EF4444' },
+];
+
+export const topCompanies = [
+  { name: 'OCP Group', logo: 'O', openRoles: 18, applications: 342, sector: 'Mining' },
+  { name: 'Maroc Telecom', logo: 'M', openRoles: 14, applications: 287, sector: 'Telecom' },
+  { name: 'Inwi Digital', logo: 'I', openRoles: 11, applications: 198, sector: 'Tech' },
+  { name: 'CDG Capital', logo: 'C', openRoles: 9, applications: 176, sector: 'Finance' },
+  { name: 'TechMaroc SA', logo: 'T', openRoles: 7, applications: 143, sector: 'Tech' },
+];
