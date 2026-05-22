@@ -5,6 +5,7 @@ import Auth from './pages/Auth';
 import Dashboard from './pages/adminDashboard';
 import Feed from './pages/Feed';
 import Profile from './components/Profile';
+import ApplyPage from './components/ApplyPage';
 import ProtectedRoute from './routes/ProtectedRoute';
 import CreateCompanyForm from './components/adminComponents/CreateCompanyForm';
 
@@ -52,6 +53,15 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/apply/:jobId"
+        element={
+          <ProtectedRoute>
+            <ApplyPage />
+          </ProtectedRoute>
+        }
+      />
+
 
     </Routes>
   );

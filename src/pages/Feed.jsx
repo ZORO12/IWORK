@@ -91,10 +91,14 @@ export default function Feed() {
     })();
   }, [handleSearch]);
 
-  const handleApply = (jobId) => {
-    if (!localStorage.getItem("token")) navigate("/auth", { state: { mode:"login" } });
-    else console.log("Postuler:", jobId);
-  };
+  // const handleApply = (jobId) => {
+  //   if (!localStorage.getItem("token")) navigate("/auth", { state: { mode:"login" } });
+  //   else console.log("Postuler:", jobId);
+  // };
+  const handleApply = (job) => {
+  if (!localStorage.getItem("token")) navigate("/auth", { state: { mode: "login" } });
+  else navigate(`/apply/${job.id}`, { state: { job } }); // pass job to skip extra fetch
+};
 
   const TAGS = ["Développeur","Marketing","Design","Finance","RH"];
 
@@ -400,7 +404,7 @@ export default function Feed() {
                 {/* Apply button */}
                 <button
                   onMouseEnter={() => h("apply",true)} onMouseLeave={() => h("apply",false)}
-                  onClick={() => handleApply(selectedJob.id)}
+                  onClick={() => handleApply(selectedJob)}
                   style={{
                     width:"100%", border:"none",
                     background: hov.apply ? T.tealDark : T.teal,
